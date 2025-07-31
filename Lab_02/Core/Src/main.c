@@ -138,25 +138,33 @@ int main(void)
 	  }
 	  if (inputState == GPIO_PIN_RESET) {
 		  if (count == 0) {
-			  recent = 1;
+			  // not push the button
+			  for (int8_t i = 7; i >= 0; i--) {
+				  HAL_GPIO_WritePin(outputPins[i].GPIOx, outputPins[i].GPIO_Pin, GPIO_PIN_SET);
+				  HAL_Delay(300);
+				  HAL_GPIO_WritePin(outputPins[i].GPIOx, outputPins[i].GPIO_Pin, GPIO_PIN_RESET);
+				  HAL_Delay(300);
+			  }
 		  } else {
-			  recent = count;
-		  }
-		  for (uint8_t i = 0; i < 8; i++) {
-			  if (recent <= 7) {
-				  HAL_GPIO_WritePin(outputPins[recent].GPIOx, outputPins[recent].GPIO_Pin, GPIO_PIN_RESET);
-				  HAL_Delay(300);
-				  HAL_GPIO_WritePin(outputPins[recent - 1].GPIOx, outputPins[recent - 1].GPIO_Pin, GPIO_PIN_SET);
-				  HAL_Delay(300);
-				  recent--;
+			  // push button
+			  recent = count - 1;
+
+			  for (uint8_t i = 0; i < 8; i++) {
+				  if (recent > 0) {
+					  HAL_GPIO_WritePin(outputPins[recent].GPIOx, outputPins[recent].GPIO_Pin, GPIO_PIN_RESET);
+					  HAL_Delay(300);
+					  HAL_GPIO_WritePin(outputPins[recent - 1].GPIOx, outputPins[recent - 1].GPIO_Pin, GPIO_PIN_SET);
+					  HAL_Delay(300);
+					  recent--;
+				  } else if (recent == 0) {
+					  HAL_GPIO_WritePin(outputPins[0].GPIOx, outputPins[0].GPIO_Pin, GPIO_PIN_RESET);
+					  HAL_Delay(300);
+					  HAL_GPIO_WritePin(outputPins[7].GPIOx, outputPins[7].GPIO_Pin, GPIO_PIN_SET);
+					  HAL_Delay(300);
+					  recent = 7;
+				  }
 			  }
-			  if (recent == 0) {
-				  HAL_GPIO_WritePin(outputPins[0].GPIOx, outputPins[0].GPIO_Pin, GPIO_PIN_RESET);
-				  HAL_Delay(300);
-				  HAL_GPIO_WritePin(outputPins[7].GPIOx, outputPins[7].GPIO_Pin, GPIO_PIN_SET);
-				  HAL_Delay(300);
-				  recent = 7;
-			  }
+			  count = recent + 1;
 		  }
 	  }
 	  lastButtonState = buttonState;
