@@ -1,0 +1,1 @@
+2025-08-01 01:01:25,716 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Connect timed out
