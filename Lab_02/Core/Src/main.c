@@ -117,6 +117,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+//	  if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_8) == GPIO_PIN_SET) {
+//		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+//	  }
+
 	  buttonState = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
 	  inputState = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_8);
 

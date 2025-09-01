@@ -1,0 +1,47 @@
+16:04:47 **** Incremental Build of configuration Debug for project Lab_05 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'displayHEX':
+../Core/Src/main.c:100:9: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  100 |         sprintf(show, "ADC1_CH10 0x%08X Vin = %.2f \r\n", value, volt);
+      |         ^~~~~~~
+../Core/Src/main.c:24:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   23 | #include "gpio.h"
+  +++ |+#include <stdio.h>
+   24 | 
+../Core/Src/main.c:100:9: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  100 |         sprintf(show, "ADC1_CH10 0x%08X Vin = %.2f \r\n", value, volt);
+      |         ^~~~~~~
+../Core/Src/main.c:100:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:100:39: warning: format '%X' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  100 |         sprintf(show, "ADC1_CH10 0x%08X Vin = %.2f \r\n", value, volt);
+      |                                    ~~~^                   ~~~~~
+      |                                       |                   |
+      |                                       unsigned int        uint32_t {aka long unsigned int}
+      |                                    %08lX
+../Core/Src/main.c:101:54: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  101 |         HAL_UART_Transmit(&huart3, (uint8_t *) show, strlen(show), 100);
+      |                                                      ^~~~~~
+../Core/Src/main.c:24:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   23 | #include "gpio.h"
+  +++ |+#include <string.h>
+   24 | 
+../Core/Src/main.c:101:54: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  101 |         HAL_UART_Transmit(&huart3, (uint8_t *) show, strlen(show), 100);
+      |                                                      ^~~~~~
+../Core/Src/main.c:101:54: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "Lab_05.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\USERIT\STM32CubeIDE\MAD_Lab\Lab_05\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab_05.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab_05.elf
+ 
+arm-none-eabi-size  Lab_05.elf 
+arm-none-eabi-objdump -h -S Lab_05.elf  > "Lab_05.list"
+   text	   data	    bss	    dec	    hex	filename
+  27200	    468	   2116	  29784	   7458	Lab_05.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab_05.list
+ 
+
+16:04:48 Build Finished. 0 errors, 5 warnings. (took 1s.648ms)
+

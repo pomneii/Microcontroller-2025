@@ -643,11 +643,11 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
  8000716:	f7ff ff25 	bl	8000564 <MX_GPIO_Init>
-  while (1)
-  {
-    /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
+//	  if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_8) == GPIO_PIN_SET) {
+//		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+//	  }
+
 	  buttonState = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
  800071a:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
  800071e:	4898      	ldr	r0, [pc, #608]	@ (8000980 <main+0x27c>)
