@@ -1,8 +1,9 @@
 #MicroXplorer Configuration settings - do not modify
 ADC1.Channel-0\#ChannelRegularConversion=ADC_CHANNEL_10
 ADC1.ContinuousConvMode=ENABLE
+ADC1.DataAlign=ADC_DATAALIGN_LEFT
 ADC1.EOCSelection=ADC_EOC_SEQ_CONV
-ADC1.IPParameters=Rank-0\#ChannelRegularConversion,Channel-0\#ChannelRegularConversion,SamplingTime-0\#ChannelRegularConversion,NbrOfConversionFlag,master,ContinuousConvMode,EOCSelection
+ADC1.IPParameters=Rank-0\#ChannelRegularConversion,Channel-0\#ChannelRegularConversion,SamplingTime-0\#ChannelRegularConversion,NbrOfConversionFlag,master,ContinuousConvMode,EOCSelection,DataAlign
 ADC1.NbrOfConversionFlag=1
 ADC1.Rank-0\#ChannelRegularConversion=1
 ADC1.SamplingTime-0\#ChannelRegularConversion=ADC_SAMPLETIME_3CYCLES
@@ -83,7 +84,7 @@ ProjectManager.FreePins=false
 ProjectManager.HalAssertFull=false
 ProjectManager.HeapSize=0x200
 ProjectManager.KeepUserCode=true
-ProjectManager.LastFirmware=true
+ProjectManager.LastFirmware=false
 ProjectManager.LibraryCopy=1
 ProjectManager.MainLocation=Core/Src
 ProjectManager.NoMain=false
