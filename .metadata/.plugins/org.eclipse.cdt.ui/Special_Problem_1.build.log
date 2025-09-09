@@ -1,89 +1,119 @@
-21:27:46 **** Incremental Build of configuration Debug for project Special_Problem_1 ****
+12:24:45 **** Incremental Build of configuration Debug for project Special_Problem_1 ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'HAL_ADC_ConvHalfCpltCallback':
-../Core/Src/main.c:70:9: warning: implicit declaration of function 'display_uart_half' [-Wimplicit-function-declaration]
-   70 |         display_uart_half((uint32_t*)adc_buffer);
+../Core/Src/main.c:68:9: warning: implicit declaration of function 'display_uart_half' [-Wimplicit-function-declaration]
+   68 |         display_uart_half((uint32_t*)adc_buffer);
       |         ^~~~~~~~~~~~~~~~~
 ../Core/Src/main.c: In function 'HAL_ADC_ConvCpltCallback':
-../Core/Src/main.c:79:17: warning: implicit declaration of function 'display_uart_full' [-Wimplicit-function-declaration]
-   79 |                 display_uart_full((uint32_t*)adc_buffer);
+../Core/Src/main.c:77:17: warning: implicit declaration of function 'display_uart_full' [-Wimplicit-function-declaration]
+   77 |                 display_uart_full((uint32_t*)adc_buffer);
       |                 ^~~~~~~~~~~~~~~~~
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:88:6: warning: conflicting types for 'display_uart_half'; have 'void(uint32_t *)' {aka 'void(long unsigned int *)'}
-   88 | void display_uart_half(uint32_t *adc_buf) {
+../Core/Src/main.c:86:6: warning: conflicting types for 'display_uart_half'; have 'void(uint32_t *)' {aka 'void(long unsigned int *)'}
+   86 | void display_uart_half(uint32_t *adc_buf) {
       |      ^~~~~~~~~~~~~~~~~
-../Core/Src/main.c:70:9: note: previous implicit declaration of 'display_uart_half' with type 'void(uint32_t *)' {aka 'void(long unsigned int *)'}
-   70 |         display_uart_half((uint32_t*)adc_buffer);
+../Core/Src/main.c:68:9: note: previous implicit declaration of 'display_uart_half' with type 'void(uint32_t *)' {aka 'void(long unsigned int *)'}
+   68 |         display_uart_half((uint32_t*)adc_buffer);
       |         ^~~~~~~~~~~~~~~~~
 ../Core/Src/main.c: In function 'display_uart_half':
-../Core/Src/main.c:95:47: warning: format '%X' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-   95 |         sprintf(show, "HALF : ADC1_CH3 = 0x%08X Vin = %.2f \r\n ADC1_CH4 = 0x%08X Vin = %.2f \r\n ADC1_CH5 = 0x%08X Vin = %.2f \r\n ADC1_CH6 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
+../Core/Src/main.c:93:9: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+   93 |         sprintf(show, "HALF : ADC1_CH3 = 0x%08X Vin = %.2f \r\n ADC1_CH4 = 0x%08X Vin = %.2f \r\n ADC1_CH5 = 0x%08X Vin = %.2f \r\n ADC1_CH6 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
+      |         ^~~~~~~
+../Core/Src/main.c:25:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   24 | #include "gpio.h"
+  +++ |+#include <stdio.h>
+   25 | 
+../Core/Src/main.c:93:9: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+   93 |         sprintf(show, "HALF : ADC1_CH3 = 0x%08X Vin = %.2f \r\n ADC1_CH4 = 0x%08X Vin = %.2f \r\n ADC1_CH5 = 0x%08X Vin = %.2f \r\n ADC1_CH6 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
+      |         ^~~~~~~
+../Core/Src/main.c:93:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:93:47: warning: format '%X' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+   93 |         sprintf(show, "HALF : ADC1_CH3 = 0x%08X Vin = %.2f \r\n ADC1_CH4 = 0x%08X Vin = %.2f \r\n ADC1_CH5 = 0x%08X Vin = %.2f \r\n ADC1_CH6 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
       |                                            ~~~^                                                                                                                            ~~~~~~~~~~
       |                                               |                                                                                                                                   |
       |                                               unsigned int                                                                                                                        uint32_t {aka long unsigned int}
       |                                            %08lX
-../Core/Src/main.c:95:81: warning: format '%X' expects argument of type 'unsigned int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-   95 |         sprintf(show, "HALF : ADC1_CH3 = 0x%08X Vin = %.2f \r\n ADC1_CH4 = 0x%08X Vin = %.2f \r\n ADC1_CH5 = 0x%08X Vin = %.2f \r\n ADC1_CH6 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
+../Core/Src/main.c:93:81: warning: format '%X' expects argument of type 'unsigned int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+   93 |         sprintf(show, "HALF : ADC1_CH3 = 0x%08X Vin = %.2f \r\n ADC1_CH4 = 0x%08X Vin = %.2f \r\n ADC1_CH5 = 0x%08X Vin = %.2f \r\n ADC1_CH6 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
       |                                                                              ~~~^                                                                                                              ~~~~~~~~~~
       |                                                                                 |                                                                                                                     |
       |                                                                                 unsigned int                                                                                                          uint32_t {aka long unsigned int}
       |                                                                              %08lX
-../Core/Src/main.c:95:115: warning: format '%X' expects argument of type 'unsigned int', but argument 7 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-   95 |         sprintf(show, "HALF : ADC1_CH3 = 0x%08X Vin = %.2f \r\n ADC1_CH4 = 0x%08X Vin = %.2f \r\n ADC1_CH5 = 0x%08X Vin = %.2f \r\n ADC1_CH6 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
+../Core/Src/main.c:93:115: warning: format '%X' expects argument of type 'unsigned int', but argument 7 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+   93 |         sprintf(show, "HALF : ADC1_CH3 = 0x%08X Vin = %.2f \r\n ADC1_CH4 = 0x%08X Vin = %.2f \r\n ADC1_CH5 = 0x%08X Vin = %.2f \r\n ADC1_CH6 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
       |                                                                                                                ~~~^                                                                                                ~~~~~~~~~~
       |                                                                                                                   |                                                                                                       |
       |                                                                                                                   unsigned int                                                                                            uint32_t {aka long unsigned int}
       |                                                                                                                %08lX
-../Core/Src/main.c:95:149: warning: format '%X' expects argument of type 'unsigned int', but argument 9 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-   95 |         sprintf(show, "HALF : ADC1_CH3 = 0x%08X Vin = %.2f \r\n ADC1_CH4 = 0x%08X Vin = %.2f \r\n ADC1_CH5 = 0x%08X Vin = %.2f \r\n ADC1_CH6 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
+../Core/Src/main.c:93:149: warning: format '%X' expects argument of type 'unsigned int', but argument 9 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+   93 |         sprintf(show, "HALF : ADC1_CH3 = 0x%08X Vin = %.2f \r\n ADC1_CH4 = 0x%08X Vin = %.2f \r\n ADC1_CH5 = 0x%08X Vin = %.2f \r\n ADC1_CH6 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
       |                                                                                                                                                  ~~~^                                                                                  ~~~~~~~~~~
       |                                                                                                                                                     |                                                                                         |
       |                                                                                                                                                     unsigned int                                                                              uint32_t {aka long unsigned int}
       |                                                                                                                                                  %08lX
+../Core/Src/main.c:95:53: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   95 |         HAL_UART_Transmit(&huart3, (uint8_t*) show, strlen(show), 1000);
+      |                                                     ^~~~~~
+../Core/Src/main.c:25:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   24 | #include "gpio.h"
+  +++ |+#include <string.h>
+   25 | 
+../Core/Src/main.c:95:53: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   95 |         HAL_UART_Transmit(&huart3, (uint8_t*) show, strlen(show), 1000);
+      |                                                     ^~~~~~
+../Core/Src/main.c:95:53: note: include '<string.h>' or provide a declaration of 'strlen'
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:100:6: warning: conflicting types for 'display_uart_full'; have 'void(uint32_t *)' {aka 'void(long unsigned int *)'}
-  100 | void display_uart_full(uint32_t *adc_buf) {
+../Core/Src/main.c:98:6: warning: conflicting types for 'display_uart_full'; have 'void(uint32_t *)' {aka 'void(long unsigned int *)'}
+   98 | void display_uart_full(uint32_t *adc_buf) {
       |      ^~~~~~~~~~~~~~~~~
-../Core/Src/main.c:79:17: note: previous implicit declaration of 'display_uart_full' with type 'void(uint32_t *)' {aka 'void(long unsigned int *)'}
-   79 |                 display_uart_full((uint32_t*)adc_buffer);
+../Core/Src/main.c:77:17: note: previous implicit declaration of 'display_uart_full' with type 'void(uint32_t *)' {aka 'void(long unsigned int *)'}
+   77 |                 display_uart_full((uint32_t*)adc_buffer);
       |                 ^~~~~~~~~~~~~~~~~
 ../Core/Src/main.c: In function 'display_uart_full':
-../Core/Src/main.c:106:47: warning: format '%X' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  106 |         sprintf(show, "FULL : ADC1_CH9 = 0x%08X Vin = %.2f \r\n ADC1_CH10 = 0x%08X Vin = %.2f \r\n ADC1_CH12 = 0x%08X Vin = %.2f \r\n ADC1_CH13 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
+../Core/Src/main.c:104:9: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  104 |         sprintf(show, "FULL : ADC1_CH9 = 0x%08X Vin = %.2f \r\n ADC1_CH10 = 0x%08X Vin = %.2f \r\n ADC1_CH12 = 0x%08X Vin = %.2f \r\n ADC1_CH13 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[4], vin[0], adc_buf[5], vin[1], adc_buf[6], vin[2], adc_buf[7], vin[3]);
+      |         ^~~~~~~
+../Core/Src/main.c:104:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:104:47: warning: format '%X' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  104 |         sprintf(show, "FULL : ADC1_CH9 = 0x%08X Vin = %.2f \r\n ADC1_CH10 = 0x%08X Vin = %.2f \r\n ADC1_CH12 = 0x%08X Vin = %.2f \r\n ADC1_CH13 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[4], vin[0], adc_buf[5], vin[1], adc_buf[6], vin[2], adc_buf[7], vin[3]);
       |                                            ~~~^                                                                                                                               ~~~~~~~~~~
       |                                               |                                                                                                                                      |
       |                                               unsigned int                                                                                                                           uint32_t {aka long unsigned int}
       |                                            %08lX
-../Core/Src/main.c:106:82: warning: format '%X' expects argument of type 'unsigned int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  106 |         sprintf(show, "FULL : ADC1_CH9 = 0x%08X Vin = %.2f \r\n ADC1_CH10 = 0x%08X Vin = %.2f \r\n ADC1_CH12 = 0x%08X Vin = %.2f \r\n ADC1_CH13 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
+../Core/Src/main.c:104:82: warning: format '%X' expects argument of type 'unsigned int', but argument 5 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  104 |         sprintf(show, "FULL : ADC1_CH9 = 0x%08X Vin = %.2f \r\n ADC1_CH10 = 0x%08X Vin = %.2f \r\n ADC1_CH12 = 0x%08X Vin = %.2f \r\n ADC1_CH13 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[4], vin[0], adc_buf[5], vin[1], adc_buf[6], vin[2], adc_buf[7], vin[3]);
       |                                                                               ~~~^                                                                                                                ~~~~~~~~~~
       |                                                                                  |                                                                                                                       |
       |                                                                                  unsigned int                                                                                                            uint32_t {aka long unsigned int}
       |                                                                               %08lX
-../Core/Src/main.c:106:117: warning: format '%X' expects argument of type 'unsigned int', but argument 7 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  106 |         sprintf(show, "FULL : ADC1_CH9 = 0x%08X Vin = %.2f \r\n ADC1_CH10 = 0x%08X Vin = %.2f \r\n ADC1_CH12 = 0x%08X Vin = %.2f \r\n ADC1_CH13 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
+../Core/Src/main.c:104:117: warning: format '%X' expects argument of type 'unsigned int', but argument 7 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  104 |         sprintf(show, "FULL : ADC1_CH9 = 0x%08X Vin = %.2f \r\n ADC1_CH10 = 0x%08X Vin = %.2f \r\n ADC1_CH12 = 0x%08X Vin = %.2f \r\n ADC1_CH13 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[4], vin[0], adc_buf[5], vin[1], adc_buf[6], vin[2], adc_buf[7], vin[3]);
       |                                                                                                                  ~~~^                                                                                                 ~~~~~~~~~~
       |                                                                                                                     |                                                                                                        |
       |                                                                                                                     unsigned int                                                                                             uint32_t {aka long unsigned int}
       |                                                                                                                  %08lX
-../Core/Src/main.c:106:152: warning: format '%X' expects argument of type 'unsigned int', but argument 9 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  106 |         sprintf(show, "FULL : ADC1_CH9 = 0x%08X Vin = %.2f \r\n ADC1_CH10 = 0x%08X Vin = %.2f \r\n ADC1_CH12 = 0x%08X Vin = %.2f \r\n ADC1_CH13 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[0], vin[0], adc_buf[1], vin[1], adc_buf[2], vin[2], adc_buf[3], vin[3]);
+../Core/Src/main.c:104:152: warning: format '%X' expects argument of type 'unsigned int', but argument 9 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  104 |         sprintf(show, "FULL : ADC1_CH9 = 0x%08X Vin = %.2f \r\n ADC1_CH10 = 0x%08X Vin = %.2f \r\n ADC1_CH12 = 0x%08X Vin = %.2f \r\n ADC1_CH13 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[4], vin[0], adc_buf[5], vin[1], adc_buf[6], vin[2], adc_buf[7], vin[3]);
       |                                                                                                                                                     ~~~^                                                                                  ~~~~~~~~~~
       |                                                                                                                                                        |                                                                                         |
       |                                                                                                                                                        unsigned int                                                                              uint32_t {aka long unsigned int}
       |                                                                                                                                                     %08lX
+../Core/Src/main.c:106:53: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  106 |         HAL_UART_Transmit(&huart3, (uint8_t*) show, strlen(show), 1000);
+      |                                                     ^~~~~~
+../Core/Src/main.c:106:53: note: include '<string.h>' or provide a declaration of 'strlen'
 arm-none-eabi-gcc -o "Special_Problem_1.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\USERIT\STM32CubeIDE\MAD_Lab\Special_Problem_1\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Special_Problem_1.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Special_Problem_1.elf
  
 arm-none-eabi-size  Special_Problem_1.elf 
 arm-none-eabi-objdump -h -S Special_Problem_1.elf  > "Special_Problem_1.list"
    text	   data	    bss	    dec	    hex	filename
-  30136	    468	   2244	  32848	   8050	Special_Problem_1.elf
+  30144	    468	   2244	  32856	   8058	Special_Problem_1.elf
 Finished building: default.size.stdout
  
 Finished building: Special_Problem_1.list
  
 
-21:27:47 Build Finished. 0 errors, 12 warnings. (took 1s.63ms)
+12:24:46 Build Finished. 0 errors, 18 warnings. (took 1s.11ms)
 

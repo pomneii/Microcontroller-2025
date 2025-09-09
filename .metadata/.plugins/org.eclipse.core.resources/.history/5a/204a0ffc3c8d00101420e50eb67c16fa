@@ -98,10 +98,10 @@ void display_uart_half(uint32_t *adc_buf) {
 void display_uart_full(uint32_t *adc_buf) {
 	float vin[4];
 	char show[1000];
-	for (int i = 0; i < 4; i++) {
-		vin[i] = cal_volt(adc_buf[i + 4]);
+	for (int i = 4; i < 8; i++) {
+		vin[i] = cal_volt(adc_buf[i]);
 	}
-	sprintf(show, "FULL : ADC1_CH9 = 0x%08X Vin = %.2f \r\n ADC1_CH10 = 0x%08X Vin = %.2f \r\n ADC1_CH12 = 0x%08X Vin = %.2f \r\n ADC1_CH13 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[4], vin[0], adc_buf[5], vin[1], adc_buf[6], vin[2], adc_buf[7], vin[3]);
+	sprintf(show, "FULL : ADC1_CH9 = 0x%08X Vin = %.2f \r\n ADC1_CH10 = 0x%08X Vin = %.2f \r\n ADC1_CH12 = 0x%08X Vin = %.2f \r\n ADC1_CH13 = 0x%08X Vin = %.2f \r\n\n" , adc_buf[4], vin[4], adc_buf[5], vin[5], adc_buf[6], vin[6], adc_buf[7], vin[7]);
 
 	HAL_UART_Transmit(&huart3, (uint8_t*) show, strlen(show), 1000);
 }
