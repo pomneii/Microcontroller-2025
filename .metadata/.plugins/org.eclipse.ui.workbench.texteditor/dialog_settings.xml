@@ -3,6 +3,9 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="ILI9341_Draw_Text"/>
+		<item value="Text"/>
+		<item value="sc"/>
 		<item value="Statis"/>
 		<item value="MX_GPIO_I"/>
 	</list>
